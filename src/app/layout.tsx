@@ -42,7 +42,6 @@ export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
-  hideFooter?: boolean // Optional prop to hide the footer
 }>) {
   return (
     <html lang="ko" className={`${pretendard.variable} ${museomoderno.variable}`}>

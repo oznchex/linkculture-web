@@ -7,26 +7,21 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+
+/* 모든 입력 요소에 대해 스핀 버튼을 숨김 */
 input::-webkit-inner-spin-button {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
 }
 
-/* 1200px */
-/* @media (min-width: 1200px) {
-  body {
-    display: flex;
-    justify-content: center;
-  }
-} */
-
+/* 기본 컨텐츠 컨테이너 스타일 */
 .content-container {
-  max-width: 1920px;
-  margin: 0 auto;
-  width: 100%;
+  @apply mx-auto w-full;
+  max-width: 1920px; /* 최대 폭 설정 */
 }
 
+/* 사용자의 색상 모드가 밝은 모드일 때의 색상 설정 */
 @media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 0, 0, 0;
@@ -37,9 +32,7 @@ input::-webkit-inner-spin-button {
 
 body {
   color: rgb(var(--foreground-rgb));
-  font-feature-settings:
-    'clig' 0,
-    'liga' 0;
+  font-feature-settings: 'clig' 0, 'liga' 0;
 }
 
 html {
@@ -47,8 +40,31 @@ html {
   scroll-padding-top: var(--scroll-padding, 5rem);
 }
 
+/* 유틸리티 레이어에 추가적인 유틸리티 클래스 추가 */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* 노트북에서 앱 모드 시연을 위해 최대 너비 제한 */
+@media (min-width: 640px) {
+  .content-container {
+    max-width: 375px; /* iPhone 6/7/8 크기로 설정 */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out;
   }
 }

@@ -2,6 +2,7 @@
 
 import { Metadata } from 'next'
 import localFont from 'next/font/local'
+import StatusBar from '@/components/common/StatusBar'
 
 import "./globals.css";
 
@@ -45,13 +46,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${pretendard.variable} ${museomoderno.variable}`}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-      </head>
-      <body className={`${pretendard.className} bg-[#fff]`}>
-          <div className="bg-[#F4F6FA]">{children}</div>
+      <body className="font-pretendard bg-[#fff] flex items-center justify-center min-h-screen">
+        <div className="bg-[#F4F6FA] w-screen h-screen flex items-center justify-center">
+          <div className="w-[26.875rem] h-[58.25rem] bg-white overflow-y-auto relative">
+            <StatusBar />
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   )
 }
-

@@ -67,10 +67,15 @@ const config: Config = {
           '0%': { transform: 'translateX(-50%)' },
           '100%': { transform: 'translateX(0%)' },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        }
       },
       animation: {
         infiniteScroll: 'infiniteScroll 40s linear infinite',
         infiniteScrollReverse: 'infiniteScrollReverse 40s linear infinite',
+        float: 'float 3s ease-in-out infinite'
       },
     },
   },

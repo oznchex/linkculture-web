@@ -30,12 +30,7 @@ export default function Home() {
           />
         </div>
         
-        <Link 
-          href="/login" 
-          className="w-full bg-[#3366FF] text-white py-4 rounded-lg text-center"
-        >
-          다음
-        </Link>
+        <Link href="/onboarding-name" className="bg-blue-500 text-white px-4 py-2 rounded-lg text-center">다음</Link>
       </div>
     </div>
   )

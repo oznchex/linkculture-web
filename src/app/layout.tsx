@@ -49,7 +49,6 @@ export default function RootLayout({
       <body className="font-pretendard bg-[#fff] flex items-center justify-center min-h-screen">
         <div className="bg-[#F4F6FA] w-screen h-screen flex items-center justify-center">
           <div className="w-full max-w-[430px] h-full max-h-[932px] bg-white overflow-y-auto relative mx-auto">
-            <StatusBar />
             {children}
           </div>
         </div>
@@ -57,3 +56,4 @@ export default function RootLayout({
     </html>
   )
 }
+

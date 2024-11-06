@@ -1,10 +1,16 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/onboarding');
+  };
+
   return (
     <motion.div 
     initial={{ opacity: 0 }}
@@ -38,13 +44,12 @@ export default function Home() {
             className="animate-float"
           />
         </div>
-        
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <button
+          onClick={handleClick}
+          className="w-[21.40694rem] h-[3.50356rem] flex items-center justify-center rounded-full text-white text-[1.5625rem] font-bold font-pretendard bg-blue60"
         >
-          <Link href="/onboarding" className="block bg-blue-500 text-white px-4 py-2 rounded-lg text-center">다음</Link>
-        </motion.div>
+          다음
+        </button>
       </div>
       </div>
     </motion.div>

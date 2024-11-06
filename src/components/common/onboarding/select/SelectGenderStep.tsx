@@ -76,8 +76,7 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
           <p className="mt-4 text-center text-gray-500">여성</p>
         </button>
       </motion.div>
-
-      {/* 해당사항 없음 체크박스 */}
+      
       {/* 해당사항 없음 체크박스 */}
       <motion.label 
         initial={{ x: 50, opacity: 0 }}

@@ -11,6 +11,7 @@ import SelectWheelChairAvailabilityStep from './select/SelectWheelChairAvailabil
 import CertifyWelfareCardStep from './certify/CertifyWelfareCardStep';
 import CompleteOnboardingStep from './CompleteOnboardingStep';
 import RoutingButton from '../button/RoutingButton';
+
 export default function OnboardingContainer() {
   const [step, setStep] = useState(1);
 
@@ -52,11 +53,9 @@ export default function OnboardingContainer() {
         </div>
       </div>
 
-      {/* Fixed bottom button */}
-      <div className="px-5 pb-14">
+      <div className="flex justify-center px-5 pb-14">
         <RoutingButton
           onClick={handleNext}
-          className="w-full"
         >
           다음
         </RoutingButton>

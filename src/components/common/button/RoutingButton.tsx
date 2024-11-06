@@ -32,7 +32,12 @@ const RoutingButton = ({
     <button
       onClick={handleClick}
       disabled={disabled}
-      className={`w-full py-4 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed ${className}`}
+      className={`w-full py-4 rounded-2xl text-white text-base font-medium
+        ${disabled 
+          ? 'bg-gray-200 cursor-not-allowed' 
+          : 'bg-blue-600 hover:bg-blue-700'
+        } 
+        ${className}`}
     >
       {children}
     </button>

@@ -43,7 +43,7 @@ export default function Home() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/onboarding-name" className="block bg-blue-500 text-white px-4 py-2 rounded-lg text-center">다음</Link>
+          <Link href="/onboarding" className="block bg-blue-500 text-white px-4 py-2 rounded-lg text-center">다음</Link>
         </motion.div>
       </div>
       </div>

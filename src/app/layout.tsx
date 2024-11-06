@@ -2,7 +2,6 @@
 
 import { Metadata } from 'next'
 import localFont from 'next/font/local'
-import StatusBar from '@/components/common/StatusBar'
 
 import "./globals.css";
 

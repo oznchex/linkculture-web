@@ -1,8 +1,17 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   return (
+    <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="flex flex-col items-center justify-between h-full p-8"
+  >
     <div className="flex flex-col items-center justify-between h-full p-8">
       <div className="flex-1 flex flex-col items-center justify-center gap-4">
         <Image 
@@ -30,8 +39,14 @@ export default function Home() {
           />
         </div>
         
-        <Link href="/onboarding-name" className="bg-blue-500 text-white px-4 py-2 rounded-lg text-center">다음</Link>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Link href="/onboarding-name" className="block bg-blue-500 text-white px-4 py-2 rounded-lg text-center">다음</Link>
+        </motion.div>
       </div>
-    </div>
+      </div>
+    </motion.div>
   )
 }

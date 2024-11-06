@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ProgressBar from './ProgressBar';
 import InputNameStep from './input/InputNameStep';
 import SelectGenderStep from './select/SelectGenderStep';
+import InputBirthDateStep from './input/InputBirthDateStep';
 import RoutingButton from '../button/RoutingButton';
 export default function OnboardingContainer() {
   const [step, setStep] = useState(1);
@@ -17,6 +18,8 @@ export default function OnboardingContainer() {
             return <InputNameStep onNext={handleNext} onBack={handleBack} />;
         case 2:
             return <SelectGenderStep onNext={handleNext} onBack={handleBack} />;
+        case 3:
+            return <InputBirthDateStep onNext={handleNext} onBack={handleBack} />;
     }
   };
 

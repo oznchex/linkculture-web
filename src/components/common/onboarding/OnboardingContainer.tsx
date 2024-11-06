@@ -11,12 +11,21 @@ import SelectWheelChairAvailabilityStep from './select/SelectWheelChairAvailabil
 import CertifyWelfareCardStep from './certify/CertifyWelfareCardStep';
 import CompleteOnboardingStep from './CompleteOnboardingStep';
 import RoutingButton from '../button/RoutingButton';
+import { useRouter } from 'next/navigation';
 
 export default function OnboardingContainer() {
   const [step, setStep] = useState(1);
+  const router = useRouter();
 
   const handleNext = () => setStep((prev) => prev + 1);
-  const handleBack = () => setStep((prev) => prev - 1);
+  const handleBack = () => {
+    if (step === 1) {
+      router.push('/');
+      return;
+    }
+    setStep((prev) => prev - 1);
+  };
+  
   const handleManualInput = () => setStep(7);
   const renderStep = () => {
     switch(step) {

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import Modal from '@/components/common/modal/Modal';
 
 interface CertifyWelfareCardStepProps {
@@ -17,7 +16,6 @@ export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }
 
   return (
     <div className="flex-1 flex flex-col justify-between">
-      {/* 상단 섹션 */}
       <div>
         <button 
           className="text-gray-700 mt-6"
@@ -32,72 +30,62 @@ export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }
           <h1 className="text-2xl font-bold text-gray-900">복지카드를 인증해주세요!</h1>
         </div>
 
-      {/* 인증 방식 선택 카드 */}
-      <motion.div 
-        initial={{ x: 50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="flex justify-center gap-4 mt-8"
-      >
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-colors"
-        >
-          <Image src="/assets/onboarding/photo.svg" alt="촬영하기" width={80} height={80} />
-          <p className="mt-4 text-center text-gray-500">촬영하기</p>
-        </button>
-
-        <button
-          onClick={onManualInput}
-          className="p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-colors"
-        >
-          <Image src="/assets/onboarding/input_inform.svg" alt="직접입력" width={80} height={80} />
-          <p className="mt-4 text-center text-gray-500">직접입력</p>
-        </button>
-      </motion.div>
-      <motion.label 
-        initial={{ x: 50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex items-center gap-2 mt-8 cursor-pointer"
-      >
-        <div className="relative">
-          <input
-            type="checkbox"
-            checked={hasNoWelfareCard}
-            onChange={(e) => setHasNoWelfareCard(e.target.checked)}
-            className="sr-only"
-          />
-          <div 
-            className={`w-5 h-5 rounded-full border-2 ${
-              hasNoWelfareCard 
-                ? 'border-blue-500 bg-blue-500' 
-                : 'border-gray-300 bg-white'
-            }`}
+        <div className="flex justify-center gap-4 mt-8">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-colors"
           >
-            {hasNoWelfareCard && (
-              <div className="absolute inset-1 bg-white rounded-full" />
-            )}
-          </div>
+            <Image src="/assets/onboarding/photo.svg" alt="촬영하기" width={80} height={80} />
+            <p className="mt-4 text-center text-gray-500">촬영하기</p>
+          </button>
+
+          <button
+            onClick={onManualInput}
+            className="p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-colors"
+          >
+            <Image src="/assets/onboarding/input_inform.svg" alt="직접입력" width={80} height={80} />
+            <p className="mt-4 text-center text-gray-500">직접입력</p>
+          </button>
         </div>
-        <span className="text-gray-600">해당 사항 없음</span>
-      </motion.label>
-      {/* 준비중 모달 */}
-      {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)} title="서비스 준비중">
-          <div className="p-6 text-center">
-            <h3 className="text-lg font-semibold mb-2">서비스 준비중</h3>
-            <p className="text-gray-600">촬영을 통한 인증 서비스는 현재 준비중입니다.</p>
-            <p className="text-gray-600">직접입력을 통해 인증을 진행해주세요.</p>
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+
+        <label className="flex items-center gap-2 mt-8 cursor-pointer">
+          <div className="relative">
+            <input
+              type="checkbox"
+              checked={hasNoWelfareCard}
+              onChange={(e) => setHasNoWelfareCard(e.target.checked)}
+              className="sr-only"
+            />
+            <div 
+              className={`w-5 h-5 rounded-full border-2 ${
+                hasNoWelfareCard 
+                  ? 'border-blue-500 bg-blue-500' 
+                  : 'border-gray-300 bg-white'
+              }`}
             >
-              확인
-            </button>
+              {hasNoWelfareCard && (
+                <div className="absolute inset-1 bg-white rounded-full" />
+              )}
+            </div>
           </div>
-        </Modal>
-      )}
+          <span className="text-gray-600">해당 사항 없음</span>
+        </label>
+
+        {isModalOpen && (
+          <Modal onClose={() => setIsModalOpen(false)} title="서비스 준비중">
+            <div className="p-6 text-center">
+              <h3 className="text-lg font-semibold mb-2">서비스 준비중</h3>
+              <p className="text-gray-600">촬영을 통한 인증 서비스는 현재 준비중입니다.</p>
+              <p className="text-gray-600">직접입력을 통해 인증을 진행해주세요.</p>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              >
+                확인
+              </button>
+            </div>
+          </Modal>
+        )}
       </div>
     </div>
   );

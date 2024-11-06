@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 interface SelectWheelChairAvailabilityStepProps {
   onNext: (data: { wheelChairAvailability: 'wheelchair' | 'crutches' | null, noPreference: boolean }) => void;
@@ -17,12 +16,10 @@ export default function SelectWheelChairAvailabilityStep({ onNext, onBack }: Sel
     setSelectedWheelChairAvailability(wheelChairAvailability);
     setNoWheelChairAvailabilityPreference(false);
   };
-  
-
 
   const handleNoPreferenceChange = (checked: boolean) => {
     setNoWheelChairAvailabilityPreference(checked);
-    if (checked) setSelectedWheelChairAvailability (null);
+    if (checked) setSelectedWheelChairAvailability(null);
   };
 
   const handleSubmit = () => {
@@ -36,7 +33,6 @@ export default function SelectWheelChairAvailabilityStep({ onNext, onBack }: Sel
 
   return (
     <div className="flex-1 flex flex-col justify-between">
-      {/* 상단 섹션 */}
       <div>
         <button 
           className="text-gray-700 mt-6"
@@ -51,13 +47,7 @@ export default function SelectWheelChairAvailabilityStep({ onNext, onBack }: Sel
           <h1 className="text-2xl font-bold text-gray-900">이동 보조 기구를 선택해주세요!</h1>
         </div>
 
-        {/* 휠체어/목발 선택 라디오 버튼 */}
-        <motion.div 
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col gap-4 mt-8"
-        >
+        <div className="flex flex-col gap-4 mt-8">
           <button
             onClick={() => handleWheelChairAvailabilitySelect('wheelchair')}
             className={`flex items-center gap-4 p-4 rounded-xl border ${
@@ -77,15 +67,9 @@ export default function SelectWheelChairAvailabilityStep({ onNext, onBack }: Sel
             <Image src="/assets/onboarding/crutches.png" alt="목발" width={48} height={48} />
             <span className="text-gray-600">휠체어를 사용하지 않지만 이동에 제약이 있습니다.</span>
           </button>
-        </motion.div>
+        </div>
         
-        {/* 해당사항 없음 라디오 버튼 */}
-        <motion.label 
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex items-center gap-2 mt-4 cursor-pointer"
-        >
+        <label className="flex items-center gap-2 mt-4 cursor-pointer">
           <div className="relative">
             <input
               type="checkbox"
@@ -106,7 +90,7 @@ export default function SelectWheelChairAvailabilityStep({ onNext, onBack }: Sel
             </div>
           </div>
           <span className="text-gray-600">해당 사항 없음</span>
-        </motion.label>
+        </label>
       </div>
     </div>
   );

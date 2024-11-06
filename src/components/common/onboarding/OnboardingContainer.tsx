@@ -5,13 +5,18 @@ import ProgressBar from './ProgressBar';
 import InputNameStep from './input/InputNameStep';
 import SelectGenderStep from './select/SelectGenderStep';
 import InputBirthDateStep from './input/InputBirthDateStep';
+import InputResidenceStep from './input/InputResidenceStep';
+import SelectDisabilityStep from './select/SelectDisabilityStep';
+import SelectWheelChairAvailabilityStep from './select/SelectWheelChairAvailabilityStep';
+import CertifyWelfareCardStep from './certify/CertifyWelfareCardStep';
+import CompleteOnboardingStep from './CompleteOnboardingStep';
 import RoutingButton from '../button/RoutingButton';
 export default function OnboardingContainer() {
   const [step, setStep] = useState(1);
 
   const handleNext = () => setStep((prev) => prev + 1);
   const handleBack = () => setStep((prev) => prev - 1);
-
+  const handleManualInput = () => setStep(7);
   const renderStep = () => {
     switch(step) {
         case 1:
@@ -20,6 +25,16 @@ export default function OnboardingContainer() {
             return <SelectGenderStep onNext={handleNext} onBack={handleBack} />;
         case 3:
             return <InputBirthDateStep onNext={handleNext} onBack={handleBack} />;
+        case 4:
+            return <InputResidenceStep onNext={handleNext} onBack={handleBack} />;
+        case 5:
+            return <SelectDisabilityStep onNext={handleNext} onBack={handleBack} />;
+        case 6:
+            return <SelectWheelChairAvailabilityStep onNext={handleNext} onBack={handleBack} />;
+        case 7:
+            return <CertifyWelfareCardStep onNext={handleNext} onBack={handleBack} onManualInput={handleManualInput} />;
+        case 8:
+            return <CompleteOnboardingStep onNext={handleNext} onBack={handleBack} />;
     }
   };
 
@@ -27,7 +42,7 @@ export default function OnboardingContainer() {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Main content area */}
       <div className="flex-1 px-5">
-        {step <= 4 && (
+        {step <= 8 && (
           <div className="pt-3">
             <ProgressBar currentStep={step} totalSteps={8} />
           </div>

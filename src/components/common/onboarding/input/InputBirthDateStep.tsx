@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 interface InputBirthDateStepProps {
   onNext: (name: string) => void;

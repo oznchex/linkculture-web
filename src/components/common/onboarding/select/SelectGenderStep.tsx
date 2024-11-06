@@ -78,18 +78,32 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
       </motion.div>
 
       {/* 해당사항 없음 체크박스 */}
+      {/* 해당사항 없음 체크박스 */}
       <motion.label 
         initial={{ x: 50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex items-center gap-2 mt-8"
+        className="flex items-center gap-2 mt-8 cursor-pointer"
       >
-        <input
-          type="checkbox"
-          checked={noGenderPreference}
-          onChange={(e) => handleNoPreferenceChange(e.target.checked)}
-          className="w-5 h-5 rounded-full border-gray-300"
-        />
+        <div className="relative">
+          <input
+            type="checkbox"
+            checked={noGenderPreference}
+            onChange={(e) => handleNoPreferenceChange(e.target.checked)}
+            className="sr-only" // 원래 체크박스는 숨김
+          />
+          <div 
+            className={`w-5 h-5 rounded-full border-2 ${
+              noGenderPreference 
+                ? 'border-blue-500 bg-blue-500' 
+                : 'border-gray-300 bg-white'
+            }`}
+          >
+            {noGenderPreference && (
+              <div className="absolute inset-1 bg-white rounded-full" />
+            )}
+          </div>
+        </div>
         <span className="text-gray-600">해당 사항 없음</span>
       </motion.label>
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
+import RoutingButton from '@/components/common/button/RoutingButton';
 interface InputBirthDateStepProps {
   onNext: (name: string) => void;
   onBack: () => void;
@@ -48,12 +48,18 @@ export default function InputBirthDateStep({ onNext, onBack }: InputBirthDateSte
     setBirthDate(formatted);
   };
 
+  const handleSubmit = () => {
+    if (birthDate.length === 10) {
+      onNext(birthDate);
+    }
+  };
+
   return (
     <div className="flex-1 flex flex-col justify-between">
       {/* 상단 섹션 */}
-      <div>
+      <div className="flex flex-col">
         <button 
-          className="text-gray-700 mt-6"
+          className="text-gray-700"
           onClick={onBack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,6 +82,15 @@ export default function InputBirthDateStep({ onNext, onBack }: InputBirthDateSte
             maxLength={10} // YYYY.MM.DD 형식으로 최대 10자
           />
         </div>
+      </div>
+            {/* 하단 버튼 섹션 */}
+            <div className="flex justify-center mt-[24rem]">
+        <RoutingButton 
+          onClick={handleSubmit}
+          disabled={birthDate.length !== 10}  // YYYY.MM.DD 형식의 길이(10자)가 아니면 버튼 비활성화
+        >
+          다음
+        </RoutingButton>
       </div>
     </div>
   );

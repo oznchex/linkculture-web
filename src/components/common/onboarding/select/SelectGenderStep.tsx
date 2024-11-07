@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import RoutingButton from '@/components/common/button/RoutingButton';
 
 interface SelectGenderStepProps {
   onNext: (data: { gender: 'male' | 'female' | null, noPreference: boolean }) => void;
@@ -34,9 +35,9 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
 
   return (
     <div className="flex-1 flex flex-col justify-between">
-      <div>
+      <div className="flex flex-col">
         <button 
-          className="text-gray-700 mt-6"
+          className="text-gray-700"
           onClick={onBack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,25 +50,29 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
         </div>
 
         {/* 성별 선택 카드 */}
-        <div className="flex justify-center gap-4 mt-8">
+        <div className="flex justify-center gap-6 mt-8">
           <button
             onClick={() => handleGenderSelect('male')}
-            className={`p-6 rounded-xl border ${
+            className={`p-6 w-40 rounded-xl border ${
               selectedGender === 'male' ? 'border-blue-500' : 'border-gray-200'
             }`}
           >
-            <Image src="/assets/onboarding/select_male.svg" alt="남성" width={80} height={80} />
-            <p className="mt-4 text-center text-gray-500">남성</p>
+            <div className="flex flex-col items-center">
+              <Image src="/assets/onboarding/select_male.svg" alt="남성" width={95} height={90} />
+              <p className="mt-4 text-gray-500">남성</p>
+            </div>
           </button>
 
           <button
             onClick={() => handleGenderSelect('female')}
-            className={`p-6 rounded-xl border ${
+            className={`p-6 w-40 rounded-xl border ${
               selectedGender === 'female' ? 'border-blue-500' : 'border-gray-200'
             }`}
           >
-            <Image src="/assets/onboarding/select_female.svg" alt="여성" width={80} height={80} />
-            <p className="mt-4 text-center text-gray-500">여성</p>
+            <div className="flex flex-col items-center">
+              <Image src="/assets/onboarding/select_female.svg" alt="여성" width={75}height={80} />
+              <p className="mt-4 text-gray-500">여성</p>
+            </div>
           </button>
         </div>
       
@@ -94,6 +99,15 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
           </div>
           <span className="text-gray-600">해당 사항 없음</span>
         </label>
+      </div>
+            {/* 하단 버튼 섹션 */}
+            <div className="flex justify-center mt-[14.3rem]">
+        <RoutingButton 
+          onClick={handleSubmit}
+          disabled={!selectedGender && !noGenderPreference}  // 성별이나 해당사항 없음 중 하나가 선택되어야 활성화
+        >
+          다음
+        </RoutingButton>
       </div>
     </div>
   );

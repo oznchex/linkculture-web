@@ -36,7 +36,7 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
       {/* 상단 섹션 */}
       <div className="flex flex-col">
         <button 
-          className="text-gray-700 mt-6"
+          className="text-gray-700"
           onClick={onBack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,7 +62,7 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
       </div>
 
       {/* 하단 버튼 섹션 */}
-      <div className="flex justify-center mt-[20.12rem]">
+      <div className="flex justify-center mt-[21.675rem]">
         <RoutingButton 
           onClick={handleSubmit}
           disabled={!name.trim()}  // 이름이 비어있으면 버튼 비활성화

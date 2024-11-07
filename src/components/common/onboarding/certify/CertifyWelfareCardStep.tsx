@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Modal from '@/components/common/modal/Modal';
+import ManualWelfareCardInput from './ManualWelfareCardInput';
 
 interface CertifyWelfareCardStepProps {
   onNext: () => void;
@@ -13,12 +14,27 @@ interface CertifyWelfareCardStepProps {
 export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }: CertifyWelfareCardStepProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasNoWelfareCard, setHasNoWelfareCard] = useState(false);
+  const [showManualInput, setShowManualInput] = useState(false);
+
+  const handleManualSubmit = (data: { cardNumber: string; expiryDate: string }) => {
+    // 여기서 데이터 처리 후 다음 단계로 이동
+    onNext();
+  };
+
+  if (showManualInput) {
+    return (
+      <ManualWelfareCardInput
+        onSubmit={handleManualSubmit}
+        onBack={() => setShowManualInput(false)}
+      />
+    );
+  }
 
   return (
     <div className="flex-1 flex flex-col justify-between">
       <div>
         <button 
-          className="text-gray-700 mt-6"
+          className="text-gray-700"
           onClick={onBack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,7 +56,7 @@ export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }
           </button>
 
           <button
-            onClick={onManualInput}
+            onClick={() => setShowManualInput(true)}
             className="p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-colors"
           >
             <Image src="/assets/onboarding/input_inform.svg" alt="직접입력" width={80} height={80} />
@@ -70,19 +86,10 @@ export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }
           </div>
           <span className="text-gray-600">해당 사항 없음</span>
         </label>
-
         {isModalOpen && (
-          <Modal onClose={() => setIsModalOpen(false)} title="서비스 준비중">
-            <div className="p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">서비스 준비중</h3>
-              <p className="text-gray-600">촬영을 통한 인증 서비스는 현재 준비중입니다.</p>
-              <p className="text-gray-600">직접입력을 통해 인증을 진행해주세요.</p>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-              >
-                확인
-              </button>
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="촬영하기는 준비 중이에요!">
+            <div className="text-center">
+              <p className="text-gray-600">인증을 원할 경우 직접 입력으로 진행해 주세요.</p>
             </div>
           </Modal>
         )}

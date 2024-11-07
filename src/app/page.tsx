@@ -11,8 +11,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between h-full p-8">
-      <div className="flex flex-col items-center justify-between h-full p-8">
+    <div className="flex flex-col items-center justify-between h-full">
+      <div className="flex flex-col items-center justify-between h-full">
         <div className="flex-1 flex flex-col items-center justify-center gap-4">
           <Image 
             src="/logo.svg" 
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
         
         <div className="w-full flex flex-col gap-4">
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center mt-2">
             <Image 
               src="/assets/speech_bubble.svg" 
               alt="3초만에 시작하기" 
@@ -40,8 +40,7 @@ export default function Home() {
           </div>
           <button
             onClick={handleClick}
-            className="w-[21.40694rem] h-[3.50356rem] flex items-center justify-center rounded-full text-white text-[1.5625rem] font-bold font-pretendard bg-blue60"
-          >
+            className="w-[390px] h-[3rem] flex items-center justify-center rounded-xl text-white text-[1.2625rem] bg-blue60 mb-10">
             다음
           </button>
         </div>

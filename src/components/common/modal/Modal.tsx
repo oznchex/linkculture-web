@@ -1,12 +1,15 @@
 import React from 'react';
 
 interface ModalProps {
+  isOpen: boolean;
   onClose: () => void;
   title: string;
   children: React.ReactNode;
 }
 
-export default function Modal({ onClose, title, children }: ModalProps) {
+export default function Modal({ isOpen, onClose, title, children }: ModalProps) {
+  if (!isOpen) return null;
+  
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* 배경 오버레이 */}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import RoutingButton from '@/components/common/button/RoutingButton';
 
 interface InputNameStepProps {
   onNext: (name: string) => void;
@@ -33,7 +34,7 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
   return (
     <div className="flex-1 flex flex-col justify-between">
       {/* 상단 섹션 */}
-      <div>
+      <div className="flex flex-col">
         <button 
           className="text-gray-700 mt-6"
           onClick={onBack}
@@ -58,6 +59,16 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+      </div>
+
+      {/* 하단 버튼 섹션 */}
+      <div className="flex justify-center mt-[20.12rem]">
+        <RoutingButton 
+          onClick={handleSubmit}
+          disabled={!name.trim()}  // 이름이 비어있으면 버튼 비활성화
+        >
+          다음
+        </RoutingButton>
       </div>
     </div>
   );

@@ -61,14 +61,6 @@ export default function OnboardingContainer() {
           {renderStep()}
         </div>
       </div>
-
-      <div className="flex justify-center px-5 pb-14">
-        <RoutingButton
-          onClick={handleNext}
-        >
-          다음
-        </RoutingButton>
-      </div>
     </div>
   );
 }

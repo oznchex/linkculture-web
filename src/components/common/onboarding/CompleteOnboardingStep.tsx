@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Modal from '@/components/common/modal/Modal';
+import RoutingButton from '@/components/common/button/RoutingButton';
 
 interface CompleteOnboardingStepProps {
   onNext: () => void;
@@ -11,14 +12,12 @@ interface CompleteOnboardingStepProps {
 }
 
 export default function CompleteOnboardingCardStep({ onNext, onBack }: CompleteOnboardingStepProps) {
-  const [hasNoWelfareCard, setHasNoWelfareCard] = useState(false);
-
   return (
     <div className="flex-1 flex flex-col justify-between">
       {/* 상단 섹션 */}
-      <div>
+      <div className="flex flex-col">
         <button 
-          className="text-gray-700 mt-6"
+          className="text-gray-700"
           onClick={onBack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,14 +42,14 @@ export default function CompleteOnboardingCardStep({ onNext, onBack }: CompleteO
             className="w-full max-w-[320px]"
           />
         </div>
-
-        {/* 하단 버튼
-        <button
-          onClick={onNext}
-          className="w-full bg-blue-600 text-white py-4 rounded-full font-bold hover:bg-blue-700 transition-colors"
-        >
-          둘러보러 가기
-        </button> */}
+        <div className="mt-auto mb-8">
+          <RoutingButton 
+            onClick={onNext}
+            className="w-full"
+          >
+            다음
+          </RoutingButton>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import RoutingButton from '@/components/common/button/RoutingButton';
 
 interface InputResidenceStepProps {
   onNext: (name: string) => void;
@@ -12,9 +13,7 @@ export default function InputResidenceStep({ onNext, onBack }: InputResidenceSte
     const [isDistrictOpen, setIsDistrictOpen] = useState(false);
 
     const seoulDistricts = [
-        '강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구',
-        '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구',
-        '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구'
+        '동구', '서구', '남구', '북구', '광산구'
       ];
   
   useEffect(() => {
@@ -30,12 +29,19 @@ export default function InputResidenceStep({ onNext, onBack }: InputResidenceSte
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // handleSubmit 함수 추가
+  const handleSubmit = () => {
+    if (district) {
+      onNext(district);
+    }
+  };
+
   return (
     <div className="flex-1 flex flex-col justify-between">
       {/* 상단 섹션 */}
-      <div>
+      <div className="flex flex-col">
         <button 
-          className="text-gray-700 mt-6"
+          className="text-gray-700"
           onClick={onBack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -101,9 +107,18 @@ export default function InputResidenceStep({ onNext, onBack }: InputResidenceSte
               </div>
             )}
           </div>
+          </div>
         </div>
       </div>
-    </div>
+      {/* 하단 버튼 섹션 */}
+      <div className="flex justify-center mt-[17.25rem]">
+        <RoutingButton 
+          onClick={handleSubmit}
+          disabled={!district}  // 이름이 비어있으면 버튼 비활성화
+        >
+          다음
+        </RoutingButton>
+      </div>
     </div>
   );
 }

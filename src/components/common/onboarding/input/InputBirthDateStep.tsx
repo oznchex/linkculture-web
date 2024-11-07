@@ -84,7 +84,7 @@ export default function InputBirthDateStep({ onNext, onBack }: InputBirthDateSte
         </div>
       </div>
             {/* 하단 버튼 섹션 */}
-            <div className="flex justify-center mt-[24rem]">
+            <div className="flex justify-center mt-[23.9rem]">
         <RoutingButton 
           onClick={handleSubmit}
           disabled={birthDate.length !== 10}  // YYYY.MM.DD 형식의 길이(10자)가 아니면 버튼 비활성화

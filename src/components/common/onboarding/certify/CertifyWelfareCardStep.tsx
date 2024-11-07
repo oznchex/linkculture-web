@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Modal from '@/components/common/modal/Modal';
 import ManualWelfareCardInput from './ManualWelfareCardInput';
+import RoutingButton from '@/components/common/button/RoutingButton';
 
 interface CertifyWelfareCardStepProps {
   onNext: () => void;
@@ -15,10 +16,18 @@ export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasNoWelfareCard, setHasNoWelfareCard] = useState(false);
   const [showManualInput, setShowManualInput] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
 
-  const handleManualSubmit = (data: { cardNumber: string; expiryDate: string }) => {
-    // 여기서 데이터 처리 후 다음 단계로 이동
-    onNext();
+  const handleManualSubmit = (data: { name: string; registrationNumber: string; cardNumber: string; expiryDate: string }) => {
+    setIsVerified(true);
+  };
+
+  const handleSubmit = () => {
+    if (hasNoWelfareCard || isVerified) {
+      onNext();
+    } else {
+      setShowManualInput(true);
+    }
   };
 
   if (showManualInput) {
@@ -31,68 +40,87 @@ export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }
   }
 
   return (
-    <div className="flex-1 flex flex-col justify-between">
-      <div>
-        <button 
-          className="text-gray-700"
-          onClick={onBack}
+    <div className="flex-1 flex flex-col">
+      <button 
+        className="text-gray-700 w-8 h-8"
+        onClick={onBack}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <div className="mt-8">
+        <h1 className="text-2xl font-bold text-gray-900">마지막으로 복지카드가 있다면<br />인증을 진행해 주세요!</h1>
+      </div>
+
+      <div className="flex justify-center gap-4 mt-8">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="flex-1 p-8 rounded-2xl border border-gray-200 flex flex-col items-center"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
+          <Image src="/assets/onboarding/photo.svg" alt="촬영하기" width={48} height={48} />
+          <p className="mt-4 text-gray-500">촬영하기</p>
         </button>
 
-        <div className="mt-8">
-          <h1 className="text-2xl font-bold text-gray-900">복지카드를 인증해주세요!</h1>
-        </div>
-
-        <div className="flex justify-center gap-4 mt-8">
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-colors"
-          >
-            <Image src="/assets/onboarding/photo.svg" alt="촬영하기" width={80} height={80} />
-            <p className="mt-4 text-center text-gray-500">촬영하기</p>
-          </button>
-
-          <button
-            onClick={() => setShowManualInput(true)}
-            className="p-6 rounded-xl border border-gray-200 hover:border-blue-500 transition-colors"
-          >
-            <Image src="/assets/onboarding/input_inform.svg" alt="직접입력" width={80} height={80} />
-            <p className="mt-4 text-center text-gray-500">직접입력</p>
-          </button>
-        </div>
-
-        <label className="flex items-center gap-2 mt-8 cursor-pointer">
-          <div className="relative">
-            <input
-              type="checkbox"
-              checked={hasNoWelfareCard}
-              onChange={(e) => setHasNoWelfareCard(e.target.checked)}
-              className="sr-only"
-            />
-            <div 
-              className={`w-5 h-5 rounded-full border-2 ${
-                hasNoWelfareCard 
-                  ? 'border-blue-500 bg-blue-500' 
-                  : 'border-gray-300 bg-white'
-              }`}
-            >
-              {hasNoWelfareCard && (
-                <div className="absolute inset-1 bg-white rounded-full" />
-              )}
+        <button
+          onClick={() => setShowManualInput(true)}
+          className="relative flex-1 p-8 rounded-2xl border border-gray-200 flex flex-col items-center"
+        >
+          {isVerified && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EEF1FF] px-4 py-1 rounded-full flex items-center gap-1">
+              <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span className="text-sm font-medium text-[#4255FF]">인증 완료</span>
             </div>
+          )}
+          <Image src="/assets/onboarding/input_inform.svg" alt="직접입력" width={48} height={48} />
+          <p className="mt-4 text-gray-500">직접입력</p>
+        </button>
+      </div>
+
+      <label className="flex items-center gap-2 mt-4 cursor-pointer">
+        <div className="relative">
+          <input
+            type="checkbox"
+            checked={hasNoWelfareCard}
+            onChange={(e) => setHasNoWelfareCard(e.target.checked)}
+            className="sr-only"
+          />
+          <div 
+            className={`w-5 h-5 rounded-full border-2 ${
+              hasNoWelfareCard 
+                ? 'border-blue-500 bg-blue-500' 
+                : 'border-gray-300 bg-white'
+            }`}
+          >
+            {hasNoWelfareCard && (
+              <div className="absolute inset-1 bg-white rounded-full" />
+            )}
           </div>
-          <span className="text-gray-600">해당 사항 없음</span>
-        </label>
-        {isModalOpen && (
-          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="촬영하기는 준비 중이에요!">
-            <div className="text-center">
-              <p className="text-gray-600">인증을 원할 경우 직접 입력으로 진행해 주세요.</p>
-            </div>
-          </Modal>
-        )}
+        </div>
+        <span className="text-gray-600">해당 사항 없음</span>
+      </label>
+
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="촬영하기는 준비 중이에요!">
+          <div className="text-center">
+            <p className="text-gray-600">인증을 원할 경우 직접 입력으로 진행해 주세요.</p>
+          </div>
+        </Modal>
+      )}
+
+      <div className="mt-auto mb-8">
+        <RoutingButton 
+          onClick={handleSubmit}
+          disabled={!hasNoWelfareCard && !isVerified}
+          className="w-full"
+        >
+          다음
+        </RoutingButton>
       </div>
     </div>
   );

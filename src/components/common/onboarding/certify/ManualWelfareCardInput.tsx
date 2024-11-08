@@ -72,7 +72,7 @@ export default function ManualWelfareCardInput({ onSubmit, onBack }: ManualWelfa
 
       {/* Content Area */}
       <div className="h-[75%]">
-        <div className="mb-14">
+        <div className="mb-6">
           <h1 className="text-[26px] font-bold text-gray-900 leading-tight">복지카드에 있는 내용을</h1>
           <h2 className="text-[26px] font-bold text-gray-900 leading-tight">입력해 주세요.</h2>
         </div>
@@ -84,7 +84,7 @@ export default function ManualWelfareCardInput({ onSubmit, onBack }: ManualWelfa
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-[18px] border border-gray-200 px-4 py-3 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
+              className="w-full rounded-[18px] border border-gray-200 px-4 py-2.5 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
               placeholder="홍길동"
               maxLength={10}
               required
@@ -97,7 +97,7 @@ export default function ManualWelfareCardInput({ onSubmit, onBack }: ManualWelfa
               type="text"
               value={registrationNumber}
               onChange={handleRegistrationNumberChange}
-              className="w-full rounded-[18px] border border-gray-200 px-4 py-3 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
+              className="w-full rounded-[18px] border border-gray-200 px-4 py-2.5 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
               placeholder="123456-1******"
               required
             />
@@ -109,7 +109,7 @@ export default function ManualWelfareCardInput({ onSubmit, onBack }: ManualWelfa
               type="text"
               value={cardNumber}
               onChange={handleCardNumberChange}
-              className="w-full rounded-[18px] border border-gray-200 px-4 py-3 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
+              className="w-full rounded-[18px] border border-gray-200 px-4 py-2.5 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
               placeholder="123456-1234567"
               required
             />
@@ -121,7 +121,7 @@ export default function ManualWelfareCardInput({ onSubmit, onBack }: ManualWelfa
               type="text"
               value={expiryDate}
               onChange={handleExpiryDateChange}
-              className="w-full rounded-[18px] border border-gray-200 px-4 py-3 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
+              className="w-full rounded-[18px] border border-gray-200 px-4 py-2.5 placeholder-gray-300 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
               placeholder="YYYY.MM.DD"
               required
             />

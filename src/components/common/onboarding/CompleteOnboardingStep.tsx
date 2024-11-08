@@ -36,8 +36,9 @@ export default function CompleteOnboardingStep({ onNext, onBack }: CompleteOnboa
       {/* Content Area */}
       <div className="h-[75%]">
         <div className="mb-14">
-          <h1 className="text-[26px] font-bold text-gray-900 leading-tight">회원가입이</h1>
-          <h2 className="text-[26px] font-bold text-gray-900 leading-tight">완료되었습니다!</h2>
+          <h1 className="text-[26px] font-bold text-gray-900 leading-tight">축하드립니다!</h1>
+          <h2 className="text-[26px] font-bold text-gray-900 leading-tight">가입이 완료 되었어요.</h2>
+          <p className="text-[1rem] text-gray-600 mt-2">본격적으로 서비스를 이용해 보세요!</p>
         </div>
 
         <div className="flex flex-col items-center">
@@ -49,10 +50,6 @@ export default function CompleteOnboardingStep({ onNext, onBack }: CompleteOnboa
               style={{ objectFit: 'contain' }}
             />
           </div>
-          <p className="text-gray-600 text-center">
-            이제 링컬처와 함께<br />
-            편리한 문화생활을 즐겨보세요!
-          </p>
         </div>
       </div>
 

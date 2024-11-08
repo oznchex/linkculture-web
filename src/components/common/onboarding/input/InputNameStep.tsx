@@ -47,7 +47,7 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
 
       {/* Content Area */}
       <div className="h-[75%]">
-        <div className="mb-14">
+        <div className="mb-10">
           <h1 className="text-[26px] font-bold text-gray-900 leading-tight">만나서 반갑습니다!</h1>
           <h2 className="text-[26px] font-bold text-gray-900 leading-tight">이름이 무엇인가요?</h2>
         </div>
@@ -56,7 +56,7 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
           <label className="block text-base text-gray-600">이름</label>
           <input
             type="text"
-            className="w-full rounded-2xl border border-gray-200 px-4 py-4 mt-2"
+            className="w-full rounded-2xl border border-gray-200 px-4 py-4 mt-2 focus:outline-none focus:border-blue60 focus:ring-1 focus:ring-blue60 transition-colors"
             placeholder="홍길동"
             value={name}
             onChange={(e) => setName(e.target.value)}

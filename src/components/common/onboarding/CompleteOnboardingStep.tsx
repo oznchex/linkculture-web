@@ -12,51 +12,58 @@ interface CompleteOnboardingStepProps {
   onBack: () => void;
 }
 
-export default function CompleteOnboardingCardStep({ onBack }: CompleteOnboardingStepProps) {
+export default function CompleteOnboardingStep({ onNext, onBack }: CompleteOnboardingStepProps) {
   const router = useRouter();
 
-  const handleComplete = () => {
+  const handleStart = () => {
     router.push('/home');
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-between">
-      {/* 상단 섹션 */}
-      <div className="flex flex-col">
+    <div className="h-full flex flex-col px-5">
+      {/* Back Button Area */}
+      <div className="h-[10%] flex items-center">
         <button 
-          className="text-gray-700"
           onClick={onBack}
+          className="p-1"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
+      </div>
 
-        <div className="mt-8">
-          <h1 className="text-2xl font-bold text-gray-900">축하드립니다!</h1>
-          <h2 className="text-2xl font-bold text-gray-900 mt-1">가입이 완료 되었어요.</h2>
-          <p className="text-gray-600 mt-4">본격적으로 서비스를 이용해 보세요!</p>
+      {/* Content Area */}
+      <div className="h-[75%]">
+        <div className="mb-14">
+          <h1 className="text-[26px] font-bold text-gray-900 leading-tight">회원가입이</h1>
+          <h2 className="text-[26px] font-bold text-gray-900 leading-tight">완료되었습니다!</h2>
         </div>
 
-        {/* 일러스트레이션 섹션 추가 */}
-        <div className="flex justify-center my-12 px-8">
-          <Image
-            src="/assets/onboarding/congratulation.svg"
-            alt="온보딩 완료 일러스트레이션"
-            width={320}
-            height={320}
-            priority
-            className="w-full max-w-[320px]"
-          />
+        <div className="flex flex-col items-center">
+          <div className="w-[240px] h-[240px] relative mb-8">
+            <Image
+              src="/assets/onboarding/congratulation.svg"
+              alt="회원가입 완료"
+              fill
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
+          <p className="text-gray-600 text-center">
+            이제 링컬처와 함께<br />
+            편리한 문화생활을 즐겨보세요!
+          </p>
         </div>
-        <div className="mt-auto mb-8">
-          <RoutingButton 
-            onClick={handleComplete}
-            className="w-full"
-          >
-            다음
-          </RoutingButton>
-        </div>
+      </div>
+
+      {/* Button Area */}
+      <div className="h-[15%] flex items-center">
+        <RoutingButton 
+          onClick={handleStart}
+          className="w-full rounded-xl py-4 text-base"
+        >
+          시작하기
+        </RoutingButton>
       </div>
     </div>
   );

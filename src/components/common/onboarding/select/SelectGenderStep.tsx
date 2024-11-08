@@ -34,26 +34,30 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-between">
-      <div className="flex flex-col">
+    <div className="h-full flex flex-col px-5">
+      {/* Back Button Area */}
+      <div className="h-[10%] flex items-center">
         <button 
-          className="text-gray-700"
           onClick={onBack}
+          className="p-1"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
+      </div>
 
-        <div className="mt-8">
-          <h1 className="text-2xl font-bold text-gray-900">성별을 알려주세요!</h1>
+      {/* Content Area */}
+      <div className="h-[75%]">
+        <div className="mb-10">
+          <h1 className="text-[26px] font-bold text-gray-900 leading-tight">성별을 알려주세요!</h1>
         </div>
 
-        {/* 성별 선택 카드 */}
-        <div className="flex justify-center gap-6 mt-8">
+        {/* 기존 성별 선택 카드와 해당사항 없음 체크박스는 그대로 유지 */}
+        <div className="flex justify-center gap-10 mt-8">
           <button
             onClick={() => handleGenderSelect('male')}
-            className={`p-6 w-40 rounded-xl border ${
+            className={`p-7 w-40 rounded-xl border ${
               selectedGender === 'male' ? 'border-blue-500' : 'border-gray-200'
             }`}
           >
@@ -65,7 +69,7 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
 
           <button
             onClick={() => handleGenderSelect('female')}
-            className={`p-6 w-40 rounded-xl border ${
+            className={`p-7 w-40 rounded-xl border ${
               selectedGender === 'female' ? 'border-blue-500' : 'border-gray-200'
             }`}
           >
@@ -100,11 +104,13 @@ export default function SelectGenderStep({ onNext, onBack }: SelectGenderStepPro
           <span className="text-gray-600">해당 사항 없음</span>
         </label>
       </div>
-            {/* 하단 버튼 섹션 */}
-            <div className="flex justify-center mt-[14.3rem]">
+
+      {/* Button Area */}
+      <div className="h-[15%] flex items-center">
         <RoutingButton 
           onClick={handleSubmit}
-          disabled={!selectedGender && !noGenderPreference}  // 성별이나 해당사항 없음 중 하나가 선택되어야 활성화
+          disabled={!selectedGender && !noGenderPreference}
+          className="w-full rounded-xl py-4 text-base"
         >
           다음
         </RoutingButton>

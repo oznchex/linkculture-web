@@ -32,7 +32,7 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-between">
+    <div className="w-full flex flex-col justify-between">
       {/* 상단 섹션 */}
       <div className="flex flex-col">
         <button 

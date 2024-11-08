@@ -2,16 +2,22 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Modal from '@/components/common/modal/Modal';
 import RoutingButton from '@/components/common/button/RoutingButton';
 
 interface CompleteOnboardingStepProps {
-  onNext: () => void;
   onBack: () => void;
 }
 
-export default function CompleteOnboardingCardStep({ onNext, onBack }: CompleteOnboardingStepProps) {
+export default function CompleteOnboardingCardStep({ onBack }: CompleteOnboardingStepProps) {
+  const router = useRouter();
+
+  const handleComplete = () => {
+    router.push('/home');
+  };
+
   return (
     <div className="flex-1 flex flex-col justify-between">
       {/* 상단 섹션 */}
@@ -44,7 +50,7 @@ export default function CompleteOnboardingCardStep({ onNext, onBack }: CompleteO
         </div>
         <div className="mt-auto mb-8">
           <RoutingButton 
-            onClick={onNext}
+            onClick={handleComplete}
             className="w-full"
           >
             다음

@@ -68,13 +68,13 @@ export default function CertifyWelfareCardStep({ onNext, onBack, onManualInput }
           className="relative flex-1 p-8 rounded-2xl border border-gray-200 flex flex-col items-center"
         >
           {isVerified && (
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EEF1FF] px-4 py-1 rounded-full flex items-center gap-1">
-              <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
-                <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EEF1FF] px-3 py-1 rounded-full flex items-center gap-1 whitespace-nowrap">
+              <div className="w-3.5 h-3.5 bg-blue-500 rounded-full flex items-center justify-center">
+                <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <span className="text-sm font-medium text-[#4255FF]">인증 완료</span>
+              <span className="text-xs font-medium text-[#4255FF]">인증 완료</span>
             </div>
           )}
           <Image src="/assets/onboarding/input_inform.svg" alt="직접입력" width={48} height={48} />

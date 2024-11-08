@@ -40,7 +40,7 @@ export default function Home() {
           </div>
           <button
             onClick={handleClick}
-            className="w-[390px] h-[3rem] flex items-center justify-center rounded-xl text-white text-[1.2625rem] bg-blue60 mb-10">
+            className="mx-auto w-[95%] md:w-[400px] h-[3rem] flex items-center justify-center rounded-xl text-white text-[1.2625rem] bg-blue60 mb-10">
             다음
           </button>
         </div>

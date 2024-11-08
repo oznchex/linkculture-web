@@ -44,10 +44,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ko" className={`${pretendard.variable} ${museomoderno.variable}`}>
-      <body className="font-pretendard bg-[#fff] flex items-center justify-center min-h-screen">
-        <div className="bg-[#F4F6FA] w-screen h-screen flex items-center justify-center">
-          <div className="w-full max-w-[430px] h-full max-h-[932px] bg-white overflow-y-auto relative mx-auto">
+    <html lang="ko">
+      <body className="font-pretendard bg-[#fff] flex items-center justify-center min-h-[100dvh]">
+        <div className="bg-[#F4F6FA] w-full h-[100dvh] flex items-center justify-center">
+          <div className="w-full h-full max-w-[430px] bg-white overflow-y-auto relative mx-auto 
+            safe-area-inset-top safe-area-inset-bottom">
             {children}
           </div>
         </div>

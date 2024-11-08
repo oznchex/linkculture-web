@@ -1,16 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import ProgressBar from './ProgressBar';
-import InputNameStep from './input/InputNameStep';
-import SelectGenderStep from './select/SelectGenderStep';
-import InputBirthDateStep from './input/InputBirthDateStep';
-import InputResidenceStep from './input/InputResidenceStep';
-import SelectDisabilityStep from './select/SelectDisabilityStep';
-import SelectWheelChairAvailabilityStep from './select/SelectWheelChairAvailabilityStep';
-import CertifyWelfareCardStep from './certify/CertifyWelfareCardStep';
-import CompleteOnboardingStep from './CompleteOnboardingStep';
-import RoutingButton from '../button/RoutingButton';
+import ProgressBar from '../common/onboarding/ProgressBar';
+import InputNameStep from '../common/onboarding/input/InputNameStep';
+import SelectGenderStep from '../common/onboarding/select/SelectGenderStep';
+import InputBirthDateStep from '../common/onboarding/input/InputBirthDateStep';
+import InputResidenceStep from '../common/onboarding/input/InputResidenceStep';
+import SelectDisabilityStep from '../common/onboarding/select/SelectDisabilityStep';
+import SelectWheelChairAvailabilityStep from '../common/onboarding/select/SelectWheelChairAvailabilityStep';
+import CertifyWelfareCardStep from '../common/onboarding/certify/CertifyWelfareCardStep';
+import CompleteOnboardingStep from '../common/onboarding/CompleteOnboardingStep';
 import { useRouter } from 'next/navigation';
 
 export default function OnboardingContainer() {

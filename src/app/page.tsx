@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import RoutingButton from '@/components/common/button/RoutingButton'
 
 export default function Home() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-between h-full">
-      <div className="flex flex-col items-center justify-between h-full">
+      <div className="flex flex-col items-center justify-between h-full w-full">
         <div className="flex-1 flex flex-col items-center justify-center gap-4">
           <Image 
             src="/logo.svg" 
@@ -26,10 +27,14 @@ export default function Home() {
             width={240} 
             height={60}
           />
+          
+          <div className="mt-4 text-center text-gray-600 text-sm">
+            <p>*본 서비스는 체험용 프로토타입입니다.</p>
+            <p className="mt-1">**입력된 정보는 체험 후 즉시 삭제되며,</p>
+            <p>별도로 저장되지 않으니 안심하셔도 됩니다.</p>
+          </div>
         </div>
-        
-        <div className="w-full flex flex-col gap-4">
-          <div className="relative flex justify-center mt-2">
+        <div className="relative flex justify-center">
             <Image 
               src="/assets/speech_bubble.svg" 
               alt="3초만에 시작하기" 
@@ -38,11 +43,13 @@ export default function Home() {
               className="animate-float"
             />
           </div>
-          <button
+        <div className="w-full h-[14%] flex items-center justify-center gap-4 px-5">
+          <RoutingButton
             onClick={handleClick}
-            className="mx-auto xs:w-[360px] w-[320px] h-[3rem] flex items-center justify-center rounded-xl text-white text-[1.2625rem] bg-blue60 mb-8">
+            className="w-full"
+          >
             다음
-          </button>
+          </RoutingButton>
         </div>
       </div>
     </div>

@@ -65,7 +65,7 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
       </div>
 
       {/* Button Area */}
-      <div className="h-[15%] flex items-center">
+      <div className="h-[15%] flex items-center justify-center">
         <RoutingButton 
           onClick={handleSubmit}
           disabled={!name.trim()}

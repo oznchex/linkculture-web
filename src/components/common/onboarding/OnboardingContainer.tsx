@@ -49,7 +49,7 @@ export default function OnboardingContainer() {
   };
 
   return (
-    <div className="h-full flex flex-col overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden">
       {/* Header Area */}
       {step <= 8 && (
         <div className="h-[8%] flex items-center">

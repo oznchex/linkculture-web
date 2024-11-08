@@ -8,6 +8,7 @@ import Modal from '@/components/common/modal/Modal';
 import RoutingButton from '@/components/common/button/RoutingButton';
 
 interface CompleteOnboardingStepProps {
+  onNext: () => void;
   onBack: () => void;
 }
 

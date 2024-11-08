@@ -49,20 +49,19 @@ export default function OnboardingContainer() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full">
-    
-    <div className="w-full flex flex-col items-center justify-center gap-4">
-      {/* Main content area */}
-      <div className="w-full px-5">
-        {step <= 8 && (
-          <div className="pt-3">
+    <div className="h-full flex flex-col overflow-hidden">
+      {/* Header Area */}
+      {step <= 8 && (
+        <div className="h-[8%] flex items-center">
+          <div className="w-full px-5">
             <ProgressBar currentStep={step} totalSteps={8} />
           </div>
-        )}
-        <div className="w-full flex flex-col gap-4">
-          {renderStep()}
         </div>
-      </div>
+      )}
+
+      {/* Main Content Area */}
+      <div className="h-[92%] w-full">
+        {renderStep()}
       </div>
     </div>
   );

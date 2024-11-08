@@ -68,3 +68,12 @@ html {
     animation: fadeIn 1s ease-out;
   }
 }
+
+@supports(padding: max(0px)) {
+  .safe-area-inset-top {
+    padding-top: max(env(safe-area-inset-top), 16px);
+  }
+  .safe-area-inset-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 16px);
+  }
+}

@@ -32,40 +32,44 @@ export default function InputNameStep({ onNext, onBack }: InputNameStepProps) {
   };
 
   return (
-    <div className="w-full flex flex-col justify-between">
-      {/* 상단 섹션 */}
-      <div className="flex flex-col">
+    <div className="h-full flex flex-col px-5">
+      {/* Back Button Area */}
+      <div className="h-[10%] flex items-center">
         <button 
-          className="text-gray-700"
           onClick={onBack}
+          className="p-1"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
+      </div>
 
-        <div className="mt-8">
-          <h1 className="text-2xl font-bold text-gray-900">만나서 반갑습니다!</h1>
-          <h2 className="text-2xl font-bold text-gray-900 mt-1">이름이 무엇인가요?</h2>
+      {/* Content Area */}
+      <div className="h-[75%]">
+        <div className="mb-14">
+          <h1 className="text-[26px] font-bold text-gray-900 leading-tight">만나서 반갑습니다!</h1>
+          <h2 className="text-[26px] font-bold text-gray-900 leading-tight">이름이 무엇인가요?</h2>
         </div>
 
-        <div className="mt-12">
+        <div>
           <label className="block text-base text-gray-600">이름</label>
           <input
             type="text"
-            className="w-full rounded-2xl border border-gray-200 px-4 py-4 text-base mt-2"
-            placeholder="링컬처"
+            className="w-full rounded-2xl border border-gray-200 px-4 py-4 mt-2"
+            placeholder="홍길동"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
       </div>
 
-      {/* 하단 버튼 섹션 */}
-      <div className="flex justify-center mt-[21.675rem]">
+      {/* Button Area */}
+      <div className="h-[15%] flex items-center">
         <RoutingButton 
           onClick={handleSubmit}
-          disabled={!name.trim()}  // 이름이 비어있으면 버튼 비활성화
+          disabled={!name.trim()}
+          className="w-full rounded-xl py-4 text-base"
         >
           다음
         </RoutingButton>
